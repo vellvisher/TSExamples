@@ -19,8 +19,10 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
     </head>
     <body>
+<div class="container-fluid">
         <h1>{0}</h1>
 {1}
+</div>
     </body>
 </html>
 """
@@ -56,6 +58,10 @@ def readContents(file: str) -> str:
     with open(file, 'r') as f:
         return f.read()
 
+def readLines(file: str) -> List[str]:
+    with open(file, 'r') as f:
+        return f.readlines()
+
 """ Note that path should not have html extension. """
 def buildHtmlLink(title: str, path: str) -> str:
     return '<a class="btn-lg btn-primary"  href="{}.html">{}</a>'.format(path, title)
@@ -80,9 +86,19 @@ def formatExample(content: str) -> str:
 
 def buildExample(tsFile: str) -> HtmlPage:
     example = ExampleHtmlPage(tsFile)
-    example.content = "<pre>" + formatExample(readContents(tsFile)) + "</pre>"
-    return example
+    example.content = ""
+    index = 0
+    for line in readLines(tsFile):
+        if line.startswith("//"):
+            if index > 0:
+                example.content += "</code>"
+            example.content += "<h6>" + line[3:] + "</h6>\n<code>"
+        else:
+            example.content += line + "<br>"
+        index += 1
 
+    example.content += "</code>"
+    return example
 
 def writeWebPage(page: HtmlPage):
     with open(page.path + ".html", "w") as p:
@@ -94,7 +110,3 @@ os.makedirs(EXAMPLES_DIRECTORY, exist_ok = True)
 
 for tsFile in tsFiles(CURRENT_DIRECTORY):
     writeWebPage(buildExample(tsFile))
-
-# for tsFile in tsFiles("."):
-#     contents = readContents(tsFile)
-#     parse
