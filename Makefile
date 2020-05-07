@@ -3,6 +3,6 @@ build:	verify
 verify:
 	mypy build.py
 test:
-	tsc *.ts && node *.js && rm -rf *.js
+	tsc --target es6 *.ts && node *.js && rm -rf *.js
 clean:
 	rm -r index.html examples
