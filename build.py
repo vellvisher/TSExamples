@@ -21,6 +21,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     <body>
 <div class="container-fluid">
         <h1>{0}</h1>
+<hr>
 {1}
 </div>
     </body>
