@@ -3,6 +3,7 @@ import re
 from typing import List, Set, Dict, Tuple, Optional
 
 CURRENT_DIRECTORY = "."
+EXAMPLES_DIRECTORY = "examples"
 
 HTML_TEMPLATE = """<!DOCTYPE html>
 <html>
@@ -88,6 +89,8 @@ def writeWebPage(page: HtmlPage):
         p.write((HTML_TEMPLATE.format(page.title, page.content)))
 
 writeWebPage(buildIndex(tsFiles(CURRENT_DIRECTORY)))
+
+os.makedirs(EXAMPLES_DIRECTORY, exist_ok = True)
 
 for tsFile in tsFiles(CURRENT_DIRECTORY):
     writeWebPage(buildExample(tsFile))
