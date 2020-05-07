@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+   <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Variables Example</title>
+
+    </head>
+    <body>
+        <h1>Variables Example</h1>
+<pre>// Declare a block-scoped variable<br />let myNum = 1.0<br />myNum++<br />myNum += 5.0<br />console.log(myNum)   // 7.0<br /><br />// Cannot re-declare a block scoped variable.<br />/* let myNum: string = "hello" */<br /><br />// Function-scoped or var-scoped variables like JavaScript.<br />var myVarNum = 1.0<br />console.log(myVarNum)   // 1.0<br /><br />// Caution: Can re-declare var-scoped variables and shadow the previous variable.<br />var myVarNum = 5.0<br />console.log(myVarNum)   // 5.0<br /><br />// Cannot re-declare a var-scoped variable with a different type.<br />/* var myVarNum: string = "hello" // Subsequent variable declarations must have the same type. */<br /><br />// Declare multiple variables as comma-separated values.<br />let myNum1 = 1.0, myNum2 = 4.0, result = " result"<br />console.log(myNum1 + myNum2 + result)  // 5.0 result<br /><br />// Variables can be declared without a type, then set later and have their type changed.<br />let hey<br />console.log(hey)  // undefined<br />hey = "hello"<br />console.log(hey)  // hello<br />hey = 5<br />console.log(hey)  // 5<br /><br />// Constants can be declared to keep a variable bound to a value.<br />/* const constHey  // Error: const must be initialized. */<br /><br />const constHey = "hello"<br />console.log(constHey)  // hello<br />/* constHey = 5  // cannot assign because it's const. */<br /></pre>
+    </body>
+</html>
