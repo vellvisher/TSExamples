@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+   <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Strings Example</title>
+
+    </head>
+    <body>
+<div class="container-fluid">
+        <h1>Strings Example</h1>
+<h6>Common operations
+</h6>
+<code>let hello = "Hello"
+<br>console.log(hello.length)  // 5
+<br>console.log(hello.toLowerCase())  // hello
+<br>console.log(hello.toUpperCase())  // HELLO
+<br>
+<br></code><h6>Unicode
+</h6>
+<code>let namaste = "नमस्ते"
+<br>console.log(namaste)  // नमस्ते
+<br>
+<br></code><h6>Length of string
+</h6>
+<code>
+<br></code><h6>Caution: Not unicode-aware length.
+</h6>
+<code>let smiley = "😁"
+<br>console.log(smiley.length)  // 2
+<br>
+<br></code><h6>Unicode-aware length.
+</h6>
+<code>console.log([...smiley].length)  // 1
+<br>
+<br></code><h6>Loop over characters of string
+</h6>
+<code>
+<br></code><h6>Caution: Not unicode-aware length.
+</h6>
+<code>for (let i = 0; i < smiley.length; i++) {
+<br>    console.log(smiley.charAt(i))  // Malformed characters.
+<br>}
+<br>
+<br></code><h6>Unicode-safe way to loop over string.
+</h6>
+<code>const chars = [...smiley]
+<br>chars.forEach (function (char) {
+<br>    console.log(char)  // 😁
+<br>})
+<br>
+<br></code><h6>Substrings
+</h6>
+<code>
+<br></code><h6>Using number of characters
+</h6>
+<code>let helloWorld = "Hello World"
+<br>console.log(helloWorld.substr(6, 5))  // World
+<br>
+<br></code><h6>Allows overflow.
+</h6>
+<code>console.log(helloWorld.substr(6, 30))  // World
+<br>
+<br></code><h6>Between two indices.
+</h6>
+<code>console.log(helloWorld.substring(6, 11))  // World
+<br>
+<br></code><h6>Allows overflow.
+</h6>
+<code>console.log(helloWorld.substring(6, 30))  // World
+<br>
+<br></code><h6>TODO: Slice function
+</h6>
+<code>
+<br></code><h6>Includes/contains substring
+</h6>
+<code>console.log(hello.includes("llo"))  // true
+<br>console.log(hello.includes("wor"))  // false
+<br>
+<br></code><h6>Split
+</h6>
+<code>console.log(helloWorld.split(" "))  // [ 'Hello', 'World' ]
+<br></code>
+</div>
+    </body>
+</html>
