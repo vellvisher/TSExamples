@@ -15,7 +15,22 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
     <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+   <style>
+     ol {{
+         list-style-type: none;
+     }}
+     li {{
+         float:left;
+         margin:1em;
+     }}
+     .btn-lg {{
+         width:130px;
+         border-radius:0.7rem;
+         text-align:center;
+         height:100px;
+         display:block
+     }}
+   </style>
     <title>{0}</title>
 
     </head>
@@ -81,11 +96,14 @@ def buildIndex(tsFiles: List[str]) -> HtmlPage:
 
     iterOrder = sorted(iterOrder)
 
+    index.content += "<ol>"
     for (_, htmlFileName) in iterOrder:
         tsPage = ExampleHtmlPage(htmlFileName)
+        index.content += "<li>"
         index.content += buildHtmlLink(tsPage.linkName, tsPage.path)
+        index.content += "</li>"
         index.content += '\n'
-
+    index.content += "</ol>"
     return index
 
 # Takes 11-helloWorld.ts and returns (11, helloWorld)
