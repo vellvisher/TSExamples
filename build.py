@@ -4,6 +4,7 @@ from typing import List, Set, Dict, Tuple, Optional
 
 CURRENT_DIRECTORY = "."
 EXAMPLES_DIRECTORY = "examples"
+TYPESCRIPT_EXTENSION = ".ts"
 
 HTML_TEMPLATE = """<!DOCTYPE html>
 <html>
@@ -37,13 +38,13 @@ class HtmlPage:
 class ExampleHtmlPage(HtmlPage):
     linkName: str
 
-    def __init__(self, tsFile):
-        tsFileNoExtension = tsFile[2:-3]  # remove number and .swift
-
-        tsFileHyphen = tsFileNoExtension[0] + re.sub(r'(?<!^)(?=[A-Z])', '-', tsFileNoExtension[1:]).lower()
+    # example name is of format helloWorld
+    def __init__(self, exampleName: str):
+        assert(not exampleName.endswith(TYPESCRIPT_EXTENSION))
+        tsFileHyphen = exampleName[0] + re.sub(r'(?<!^)(?=[A-Z])', '-', exampleName[1:]).lower()
         self.path = "examples/{}".format(tsFileHyphen)
 
-        tsFileLinkHeading = tsFileNoExtension[0].upper() + re.sub(r'(?<!^)(?=[A-Z])', ' ', tsFileNoExtension[1:])
+        tsFileLinkHeading = exampleName[0].upper() + re.sub(r'(?<!^)(?=[A-Z])', ' ', exampleName[1:])
         self.title = tsFileLinkHeading + " Example"
         self.linkName = tsFileLinkHeading
 
@@ -51,7 +52,7 @@ class ExampleHtmlPage(HtmlPage):
 def tsFiles(dirPath: str) -> List[str]:
     tsFiles = []
     for f in os.listdir(dirPath):
-        if f.endswith(".ts"):
+        if f.endswith(TYPESCRIPT_EXTENSION):
             tsFiles.append(f)
     return tsFiles
 
@@ -73,20 +74,32 @@ def buildIndex(tsFiles: List[str]) -> HtmlPage:
     index.path = "index"
     index.content = ""
 
-    # Gets the correct order, 1, 2, ...
-    # TODO(vaarnan): Will probably break for double digits, fix.
-    for tsFile in reversed(tsFiles):
-        tsPage = ExampleHtmlPage(tsFile)
+    # List of sorted file names without number
+    iterOrder:List[Tuple[int, str]] = []
+    for tsFile in tsFiles:
+        iterOrder.append(splitIndexAndExampleName(tsFile))
+
+    iterOrder = sorted(iterOrder)
+
+    for (_, htmlFileName) in iterOrder:
+        tsPage = ExampleHtmlPage(htmlFileName)
         index.content += buildHtmlLink(tsPage.linkName, tsPage.path)
         index.content += '\n'
 
     return index
 
+# Takes 11-helloWorld.ts and returns (11, helloWorld)
+def splitIndexAndExampleName(tsFile: str) -> Tuple[int, str]:
+    num, fileName = tsFile.split("-", 1)
+    num, exampleName = (num, fileName[:-3])
+    return (int(num), exampleName)
+
 def formatExample(content: str) -> str:
     return "<br />".join(content.split("\n"))
 
 def buildExample(tsFile: str) -> HtmlPage:
-    example = ExampleHtmlPage(tsFile)
+    _, htmlFileName = splitIndexAndExampleName(tsFile)
+    example = ExampleHtmlPage(htmlFileName)
     example.content = ""
     index = 0
     for line in readLines(tsFile):
