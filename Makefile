@@ -5,4 +5,5 @@ verify:
 test:
 	tsc --target es6 *.ts && node *.js && rm -rf *.js
 clean:
-	rm -r index.html examples
+	if [ -a index.html ]; then rm index.html; fi;
+	if [ -a examples ]; then rm -r examples; fi;
