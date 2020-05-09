@@ -21,7 +21,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
      }}
      li {{
          float:left;
-         margin:1em;
+         margin:0.7em;
      }}
      .btn-lg {{
          width:130px;
