@@ -1,5 +1,7 @@
 build:	verify
 	python3 build.py
+	# Workaround due to relative path of site.css.
+	cp site.css examples/site.css
 verify:
 	mypy build.py
 test:

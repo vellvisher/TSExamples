@@ -15,22 +15,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
     <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-   <style>
-     ol {{
-         list-style-type: none;
-     }}
-     li {{
-         float:left;
-         margin:0.7em;
-     }}
-     .btn-lg {{
-         width:130px;
-         border-radius:0.7rem;
-         text-align:center;
-         height:100px;
-         display:block
-     }}
-   </style>
+<link rel="stylesheet" href="site.css">
+
     <title>{0}</title>
 
     </head>
@@ -123,13 +109,13 @@ def buildExample(tsFile: str) -> HtmlPage:
     for line in readLines(tsFile):
         if line.startswith("//"):
             if index > 0:
-                example.content += "</code>"
-            example.content += "<h6>" + line[3:] + "</h6>\n<code>"
+                example.content += "</code></pre>"
+            example.content += "<h6>" + line[3:] + "</h6>\n<pre><code>"
         else:
-            example.content += line + "<br>"
+            example.content += line
         index += 1
 
-    example.content += "</code>"
+    example.content += "</code></pre>"
     return example
 
 def writeWebPage(page: HtmlPage):

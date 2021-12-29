@@ -12,5 +12,7 @@ console.log(String(1.0) + " / " + String(3.0))    // 1 / 3
 
 // Booleans in TypeScript
 console.log(true && false)                        // false
+
 console.log(!false)                               // true
+
 console.log(true || false)                        // true

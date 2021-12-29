@@ -7,22 +7,8 @@
 
     <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-   <style>
-     ol {
-         list-style-type: none;
-     }
-     li {
-         float:left;
-         margin:0.7em;
-     }
-     .btn-lg {
-         width:130px;
-         border-radius:0.7rem;
-         text-align:center;
-         height:100px;
-         display:block
-     }
-   </style>
+<link rel="stylesheet" href="site.css">
+
     <title>Variables Example</title>
 
     </head>
@@ -32,43 +18,43 @@
 <hr>
 <h6>Declare a block-scoped variable
 </h6>
-<code>let myNum = 1.0
-<br>myNum++
-<br>myNum += 5.0
-<br>console.log(myNum)   // 7.0
-<br>
-<br></code><h6>Cannot re-declare a block scoped variable.
+<pre><code>let myNum = 1.0
+myNum++
+myNum += 5.0
+console.log(myNum)   // 7.0
+
+</code></pre><h6>Cannot re-declare a block scoped variable.
 </h6>
-<code>/* let myNum: string = "hello" */
-<br>
-<br></code><h6>Function-scoped or var-scoped variables like JavaScript.
+<pre><code>/* let myNum: string = "hello" */
+
+</code></pre><h6>Function-scoped or var-scoped variables like JavaScript.
 </h6>
-<code>var myVarNum = 1.0
-<br>console.log(myVarNum)   // 1.0
-<br>
-<br></code><h6>Caution: Can re-declare var-scoped variables and shadow the previous variable.
+<pre><code>var myVarNum = 1.0
+console.log(myVarNum)   // 1.0
+
+</code></pre><h6>Caution: Can re-declare var-scoped variables and shadow the previous variable.
 </h6>
-<code>var myVarNum = 5.0
-<br>console.log(myVarNum)   // 5.0
-<br>
-<br></code><h6>Cannot re-declare a var-scoped variable with a different type.
+<pre><code>var myVarNum = 5.0
+console.log(myVarNum)   // 5.0
+
+</code></pre><h6>Cannot re-declare a var-scoped variable with a different type.
 </h6>
-<code>/* var myVarNum: string = "hello" // Subsequent variable declarations must have the same type. */
-<br>
-<br></code><h6>Declare multiple variables as comma-separated values.
+<pre><code>/* var myVarNum: string = "hello" // Subsequent variable declarations must have the same type. */
+
+</code></pre><h6>Declare multiple variables as comma-separated values.
 </h6>
-<code>let myNum1 = 1.0, myNum2 = 4.0, result = " result"
-<br>console.log(myNum1 + myNum2 + result)  // 5.0 result
-<br>
-<br></code><h6>Variables can be declared without a type, then set later and have their type changed.
+<pre><code>let myNum1 = 1.0, myNum2 = 4.0, result = " result"
+console.log(myNum1 + myNum2 + result)  // 5.0 result
+
+</code></pre><h6>Variables can be declared without a type, then set later and have their type changed.
 </h6>
-<code>let hey
-<br>console.log(hey)  // undefined
-<br>hey = "hello"
-<br>console.log(hey)  // hello
-<br>hey = 5
-<br>console.log(hey)  // 5
-<br></code>
+<pre><code>let hey
+console.log(hey)  // undefined
+hey = "hello"
+console.log(hey)  // hello
+hey = 5
+console.log(hey)  // 5
+</code></pre>
 </div>
     </body>
 </html>

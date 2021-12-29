@@ -1,0 +1,18 @@
+ol {
+    list-style-type: none;
+}
+li {
+    float:left;
+    margin:0.7em;
+}
+.btn-lg {
+    width:130px;
+    border-radius:0.7rem;
+    text-align:center;
+    height:100px;
+    display:block
+}
+pre code {
+    color: #e83e8c;
+    word-wrap: break-word;
+}
