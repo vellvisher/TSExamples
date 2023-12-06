@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+   <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="site.css">
+
+    <title>Dictionaries Example</title>
+
+    </head>
+    <body>
+<div class="container-fluid">
+        <h1>Dictionaries Example</h1>
+<hr>
+<h6>Initialization
+</h6>
+<pre><code>let emptyDictionary: {[key: string]: number} = {};
+let anotherEmptyDict: {[key: string]: number} = {};
+let strings: {[key: string]: string} = {
+    'a': 'A',
+    'b': 'B',
+};
+
+</code></pre><h6>Accessing and assigning elements
+</h6>
+<pre><code>console.log(strings['a']);
+strings['a'] = 'AZ';
+strings['a'] = 'AX';
+
+</code></pre><h6>Handling non-existing keys
+</h6>
+<pre><code>let a = strings['a'];
+if (a) console.log(a);
+
+</code></pre><h6>Removing
+</h6>
+<pre><code>delete strings['a'];
+delete strings['nope'];
+
+</code></pre><h6>Updating
+</h6>
+<pre><code>strings['a'] = 'A';
+
+</code></pre><h6>Iterating
+</h6>
+<pre><code>for (const [key, val] of Object.entries(strings)) console.log(`${key}: ${val}`);
+for (const key of Object.keys(strings)) console.log(`KEY: ${key}`);
+for (const val of Object.values(strings)) console.log(`VAL: ${val}`);
+
+</code></pre><h6>Getting all keys & values
+</h6>
+<pre><code>let keys = Object.keys(strings);
+let vals = Object.values(strings);
+
+</code></pre><h6>Clearing everything
+</h6>
+<pre><code>strings = {};
+
+console.log(Object.keys(strings).length);
+</code></pre>
+</div>
+    </body>
+</html>
