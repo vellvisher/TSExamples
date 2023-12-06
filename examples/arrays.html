@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+   <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="site.css">
+
+    <title>Arrays Example</title>
+
+    </head>
+    <body>
+<div class="container-fluid">
+        <h1>Arrays Example</h1>
+<hr>
+<h6>Type inference FTW.
+</h6>
+<pre><code>let strings = ["a", "b", "c"];
+
+let strings2: string[] = ["d", "e", "f"];
+
+let strings3: string[] = [];
+
+let strings4: string[] = new Array(3).fill("hey");
+
+</code></pre><h6>Appending.
+</h6>
+<pre><code>strings.push("d", "e");
+strings.push("f", "g");
+
+</code></pre><h6>Joining.
+</h6>
+<pre><code>strings3 = [...strings, ...strings2];
+
+</code></pre><h6>Checking length.
+</h6>
+<pre><code>console.log(strings.length);
+
+</code></pre><h6>Accessing elements.
+</h6>
+<pre><code>console.log(strings[0]);
+console.log(strings[strings.length - 1]);
+
+</code></pre><h6>Assigning elements.
+</h6>
+<pre><code>strings[0] = "a";
+
+</code></pre><h6>Slices.
+</h6>
+<pre><code>strings.splice(0, 1, "a");
+strings.splice(0, 2, "a", "b");
+strings.slice(0, 4);
+strings.slice(0, strings.length);
+
+</code></pre><h6>Methods.
+</h6>
+<pre><code>if (strings.length === 0) {
+  console.log("empty");
+} else {
+  console.log("populated");
+}
+strings.splice(0, 0, "a");
+console.log(strings.shift());
+strings = strings.map(str => str + "0");
+strings.pop();
+
+</code></pre><h6>Clearing.
+</h6>
+<pre><code>strings.length = 0;
+strings = [];
+
+</code></pre><h6>Using a loop to create a multidimensional array.
+</h6>
+<pre><code>let rows = 10, cols = 10;
+let dimensional: number[][] = [];
+for (let col = 0; col < 10; col++) {
+  dimensional.push(new Array(rows).fill(0));
+}
+</code></pre>
+</div>
+    </body>
+</html>
